@@ -32,7 +32,7 @@ class BaseModel:
         """
         print
         """
-        return "[{}]({}){}".format(self.__class__.__name__,self.id,self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
 if __name__ == "__main__":
 
