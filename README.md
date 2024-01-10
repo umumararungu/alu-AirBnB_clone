@@ -2,7 +2,7 @@ AirBnB Clone Project
 
 This project aims to deploy our final project on our server or AirBnB website. 
 
-All will be done through command interpreter,website2, database, and API.
+All will be done through command interpreter, website, database, and API.
 
 1. Command Interpreter
   ----------------------
