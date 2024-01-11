@@ -5,7 +5,7 @@ testing BaseModel
 import unittest
 from models.base_model import BaseModel
 
-class TestBaseModel(unittest.TestCase):
+class BaseModel(unittest.TestCase):
     def init_Test(self):
         """
         init tests
