@@ -36,7 +36,7 @@ class Testbasemodel(unittest.TestCase):
         self.assertEqual(my_model_dict['updated_at'],my_model.updated_at)
         self.assertEqual(my_model_dict['created_at'],my_model.created_at)
 
-    def str_Test(self):
+    def __str__(self):
         """
         str tests
         """
