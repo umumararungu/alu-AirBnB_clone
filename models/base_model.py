@@ -7,7 +7,7 @@ from datetime import datetime
 class BaseModel:
     def __init__(self, *args, **kwargs):
         """new instances"""
-        time_format = "%Y-%m-%dT%H:%M:%s.%f"
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for key,value in kwargs.items():
                 if key == "__class__":
