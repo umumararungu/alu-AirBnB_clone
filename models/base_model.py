@@ -9,7 +9,7 @@ class BaseModel:
         """new instances"""
         time_format = "%Y-%m-%dT%H:%M:%s.%f"
         if kwargs:
-            for key,value in kwargs2.items():
+            for key,value in kwargs.items():
                 if key == "__class__":
                     continue
                 elif key == "created_at" or key == "updated_at":
