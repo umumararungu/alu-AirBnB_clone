@@ -1,4 +1,5 @@
 #!usr/bin/python3
+#Basemode class
 '''base model'''
 
 import uuid
