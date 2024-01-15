@@ -30,7 +30,7 @@ class FileStorage():
         all_obj = FileStorage.__objects
         dict_obj = {}
         for obj in all_obj.keys():
-            dict_obj[obj].to_dict()
+            dict_obj[obj] = all_obj[obj].to_dict()
         with open(FileStorage.__file_path, "w", encoding="utf-8")as file:
             json.dump(dict_obj,file)
 
