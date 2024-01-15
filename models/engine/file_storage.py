@@ -39,7 +39,7 @@ class FileStorage():
             with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
                 try:
                     dict_obj = json.load(file)
-                    for key,value in dict_obj.items():
+                    for key, value in dict_obj.items():
                         class_name, obj_id = key.split('.')
                         class_ =eval(class_name)
                         instance = class_(**value)
