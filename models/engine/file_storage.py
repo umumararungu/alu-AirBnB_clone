@@ -31,5 +31,19 @@ class FileStorage():
         dict_obj = {}
         for obj in all_obj.keys():
             dict_obj[obj].to_dict()
+        with open(FileStorage.__file_path, "w", encoding="utf-8")as file:
+            json.dump(dict_obj,file)
 
+    def reload(self):
+        if os.path.isfile(FileStorage.__file_path):
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
+                try:
+                    dict_obj = json.load(file)
+                    for key,value in dict_obj.items():
+                        class_name, obj_id = key.split('.')
+                        class_ =eval(class_name)
+                        instance = class_(**value)
+                        FileStorage.__objects[key] = instance 
+                except Exception:
+                    pass           
 
