@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """
 console file
 """
@@ -10,20 +10,22 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb)"
 
-    def quit_(self, arg):
+    def do_quit(self, arg):
         """
         """
         return True
     
-    def EOF_(self,arg):
+    def help_quit(self, arg):
+        """
+        """
+        print("Quit to exit program")
+        
+    def do_EOF(self, arg):
         """
         """
         print()
         return True
-    def help_(self,arg):
-        """
-        """
-        print("Quit to exit program")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
