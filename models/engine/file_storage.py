@@ -53,7 +53,6 @@ def reload (self):
                 cls = eval (class_name)
               
                 instance = cls (**values)
-
                 FileStorage.__objects[key] = instance 
       except Exception:
              pass 
