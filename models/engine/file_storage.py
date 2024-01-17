@@ -16,9 +16,8 @@ class FileStorage:
   __objects = {}
  
   def new(self, obj):
-  """
+  """add new object"""
 
-  """
   obj_cls_name = obj.__class__.__name__
   key = "{}.{}".format(obj_cls_name.obj.id)
   FileStorage.__objects[key] = obj
