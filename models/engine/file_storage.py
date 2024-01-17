@@ -4,7 +4,7 @@ file storage
 """
 import json
 import os
-<<<<<<< HEAD
+
 from models.base_model import BaseModel
 
 
