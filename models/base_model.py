@@ -4,12 +4,8 @@
 
 import uuid
 from datetime import datetime
-<<<<<<< HEAD
-import models  
-=======
+
 import models
- 
->>>>>>> 62620570d84bba2199ec862aa0c1f6efcba2e9ab
 class BaseModel:
     def __init__(self, *args, **kwargs):
         """new instances"""
@@ -26,13 +22,9 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = datetime.utcnow()
-<<<<<<< HEAD
-            
+         
             models.storage.new (self )
-=======
-        models.storage.new(self)
->>>>>>> 62620570d84bba2199ec862aa0c1f6efcba2e9ab
-    
+
     def save(self):
         """
         saving
