@@ -14,17 +14,15 @@ class FileStorage():
     __file_path = "file.json"
     __objects = {}
 
-    def new(self, obj):
-        """
-        """
-        class_name_obj = obj.__class__.__name__
-        key = "{}{}".format(class_name_obj,obj.id)
-        FileStorage.__objects[key] = obj
-
     def all(self):
-        """
-        """
+        """return what we have in storage"""
         return FileStorage.__objects
+    
+    def new(self,obj){
+        """adding new object"""
+        self.all().update({obj.dict_to()['__class__'] + '.' + obj.id: obj})
+    }
+
     def save(self):
         """
         """
