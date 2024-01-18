@@ -20,7 +20,7 @@ class FileStorage():
     
     def new(self,obj){
         """adding new object"""
-        self.all().update({obj.dict_to()['__class__'] + '.' + obj.id: obj})
+        self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
     }
 
     def save(self):
