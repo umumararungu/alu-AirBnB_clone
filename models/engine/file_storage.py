@@ -18,10 +18,9 @@ class FileStorage():
         """return what we have in storage"""
         return FileStorage.__objects
     
-    def new(self,obj){
+    def new(self,obj):
         """adding new object"""
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
-    }
 
     def save(self):
         """
