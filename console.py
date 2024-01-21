@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** class doesn't exist **")
             except NameError:
-                print("** class doesn't exist **")
+                print("** no instance found **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
