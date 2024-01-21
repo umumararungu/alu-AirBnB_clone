@@ -6,7 +6,6 @@ from models.base_model import BaseModel
 from shlex import split
 import sys
 
-
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB console."""
 
@@ -28,8 +27,8 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints the string representation of an instance."""
         args = split(arg)
-        if not args or len(args) == 1:
-            print("** instance id missing **")
+        if not args or len(args) < 2:
+            print("** class name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -39,12 +38,12 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** no instance found **")
             except NameError:
-                print("** intime **")
+                print("** class doesn't exist **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
         args = split(arg)
-        if not args or len(args) == 1:
+        if not args or len(args) < 2:
             print("** class name missing **")
         else:
             try:
@@ -53,15 +52,15 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[instance_key]
                     storage.save()
                 else:
-                    print("** class doesn't exist **")
+                    print("** no instance found **")
             except NameError:
-                print("** Umunyana **")
+                print("** class doesn't exist **")
 
     def do_all(self, arg):
         """Prints all string representations of instances."""
         args = split(arg)
         obj_list = []
-        if not args or len(args) == 1:
+        if not args or len(args) < 1:
             for key, value in storage.all().items():
                 obj_list.append(str(value))
             print(obj_list)
@@ -78,21 +77,25 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) < 3:
-            print("** attribute name missing **")
+            print("** class name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
                 instance = storage.all().get(instance_key)
 
                 if not instance:
-                    print("** class doesn't exist **")
+                    print("** no instance found **")
                     return
 
                 if len(args) < 4:
-                    print("** value missing **")
+                    print("** instance id missing **")
                     return
 
                 if len(args) < 5:
+                    print("** attribute name missing **")
+                    return
+
+                if len(args) < 6:
                     print("** value missing **")
                     return
 
@@ -107,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** attribute doesn't exist **")
 
             except NameError:
-                print("** mwiseneza **")
+                print("** class doesn't exist **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
