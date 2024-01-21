@@ -36,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
                 if instance:
                     print(instance)
                 else:
-                    print("** instance id missing **")
+                    print("** no instance found **")
             except NameError:
                 print("** class doesn't exist **")
 
