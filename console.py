@@ -3,14 +3,13 @@
 import cmd
 from models import storage
 from models.base_model import BaseModel
-from models.user import User
-from shlex import split
+import shlex
 import sys
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB console."""
     
-    valid_classes = ["BaseModel", "User"]
+    valid_classes = ["BaseModel"]
 
     def do_quit(self, arg):
         """
@@ -37,17 +36,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """Create a new instance of BaseModel, save it, and print its id."""
-        args = split(arg)
-        if not args:
-            print("** class name missing **")
+        args = shlex.split(arg)
+        if len(args) == 0:
+            print("** class name missing**")
+        elif args[0] not in self.valid_classes:
+            print("** class doesn't exist**")
         else:
-            try:
-                new_instance = eval(args[0])()
-                new_instance.save()
-                print(new_instance.id)
-            except NameError:
-                print("** class doesn't exist **")
-
+            new_instance = BaseModel()
+            new_instance.save()
+            print(new_instance.id)
+            
     def do_show(self, arg):
         """Prints the string representation of an instance."""
         args = split(arg)
