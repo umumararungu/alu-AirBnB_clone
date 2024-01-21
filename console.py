@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id."""
         args = shlex.split(arg)
         if not args or len(args) == 1:
-            print("** instance id missing **")
+            print("** class name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
                 instance_key = args[0] + "." + args[1]
                 instance = storage.all()[instance_key]
                 if len(args) == 2:
-                    print("** attribute name missing **")
+                    print("** value missing **")
                     return
                 if len(args) == 3:
                     print("** attribute name missing **")
@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** attribute doesn't exist **")
 
             except KeyError:
-                print("** no instance found **")
+                print("** class doesn't exist **")
             except NameError:
                 print("** class doesn't exist **")
 
