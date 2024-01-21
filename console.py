@@ -51,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance."""
         args = shlex.split(arg)
         if not args or len(args) == 1:
-            print("** class name missing **")
+            print("** instance id missing **")
         else:
             try:
                 instance = storage.all()[args[0] + "." + args[1]]
