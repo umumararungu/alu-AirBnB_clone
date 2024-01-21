@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
         """Create a new instance of BaseModel, save it, and print its id."""
         args = split(arg)
         if not args:
-            print("** class name missing **")
+            print("** instance id missing **")
         else:
             try:
                 new_instance = eval(args[0])()
