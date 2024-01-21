@@ -72,13 +72,13 @@ class HBNBCommand(cmd.Cmd):
                 del storage.all()[instance_key]
                 storage.save()
             except KeyError:
-                print("** no instance found **")
+                print("** class doesn't exist **")
             except NameError:
                 print("** class doesn't exist **")
 
     def do_all(self, arg):
         """Prints all string representations of instances."""
-        args = split(arg)
+        args = shlex.split(arg)
         obj_list = []
         if not args or len(args) == 1:
             for key, value in storage.all().items():
@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id."""
         args = shlex.split(arg)
         if not args or len(args) == 1:
-            print("** class name missing **")
+            print("** instance id missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
