@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[instance_key]
                     storage.save()
                 else:
-                    print("** no instance found **")
+                    print("** instance id missing **")
             except NameError:
                 print("** class doesn't exist **")
 
