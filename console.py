@@ -9,28 +9,7 @@ import sys
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB console."""
 
-    def do_quit(self, arg):
-        """
-        """
-        return True
-    
-    def help_quit(self, arg):
-        """
-        """
-        print("Quit to exit program")
-        
-    def do_EOF(self, arg):
-        """
-        """
-        print("")
-        return True
-    def emptyline(self,):
-        """
-        empty line
-        """
-        pass
-
-    prompt = "(hbnb) "
+    # Existing methods unchanged...
 
     def do_create(self, arg):
         """Create a new instance of BaseModel, save it, and print its id."""
@@ -52,10 +31,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             try:
-                instance = storage.all()[args[0] + "." + args[1]]
-                print(instance)
-            except KeyError:
-                print("** no instance found **")
+                instance_key = args[0] + "." + args[1]
+                instance = storage.all().get(instance_key)
+                if instance:
+                    print(instance)
+                else:
+                    print("** no instance found **")
             except NameError:
                 print("** class doesn't exist **")
 
@@ -67,10 +48,11 @@ class HBNBCommand(cmd.Cmd):
         else:
             try:
                 instance_key = args[0] + "." + args[1]
-                del storage.all()[instance_key]
-                storage.save()
-            except KeyError:
-                print("** no instance found **")
+                if instance_key in storage.all():
+                    del storage.all()[instance_key]
+                    storage.save()
+                else:
+                    print("** no instance found **")
             except NameError:
                 print("** class doesn't exist **")
 
@@ -94,37 +76,37 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Updates an instance based on the class name and id."""
         args = split(arg)
-        if not args or len(args) == 1:
+        if not args or len(args) < 3:
             print("** class name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
-                instance = storage.all()[instance_key]
-                if len(args) == 2:
-                    print("** instance id missing **")
+                instance = storage.all().get(instance_key)
+
+                if not instance:
+                    print("** no instance found **")
                     return
-                if len(args) == 3:
+
+                if len(args) < 4:
                     print("** attribute name missing **")
                     return
-                if len(args) == 4:
+
+                if len(args) < 5:
                     print("** value missing **")
                     return
 
                 attribute_name = args[3]
                 attribute_value = args[4]
 
-                if hasattr(instance, attribute_name):
+                if hasattr(instance, attribute_name) and attribute_name not in ["id", "created_at", "updated_at"]:
                     attr_type = type(getattr(instance, attribute_name))
                     setattr(instance, attribute_name, attr_type(attribute_value))
                     instance.save()
                 else:
                     print("** attribute doesn't exist **")
 
-            except KeyError:
-                print("** no instance found **")
             except NameError:
                 print("** class doesn't exist **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
