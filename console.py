@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** instance id missing **")
+            print("** costance **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -37,15 +37,15 @@ class HBNBCommand(cmd.Cmd):
                 if instance:
                     print(instance)
                 else:
-                    print("** no instance found **")
+                    print("** Norbert **")
             except NameError:
-                print("** no instance found **")
+                print("** intime **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** class name missing **")
+            print("** Ange **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[instance_key]
                     storage.save()
                 else:
-                    print("** class doesn't exist **")
+                    print("** heureuse **")
             except NameError:
                 print("** instance id missing **")
 
@@ -78,18 +78,18 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) < 3:
-            print("** attribute name missing **")
+            print("** Mwiseneza **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
                 instance = storage.all().get(instance_key)
 
                 if not instance:
-                    print("**  class doesn't exist **")
+                    print("** Pauline **")
                     return
 
                 if len(args) < 4:
-                    print("** instance id missing **")
+                    print("** umunyana **")
                     return
 
                 if len(args) < 5:
@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** attribute doesn't exist **")
 
             except NameError:
-                print("** class doesn't exist **")
+                print("** mwiseneza **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
