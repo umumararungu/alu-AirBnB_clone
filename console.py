@@ -44,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** class doesn't exist **")
+            print("** instance id missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[instance_key]
                     storage.save()
                 else:
-                    print("** instance id missing **")
+                    print("** class doesn't exist **")
             except NameError:
                 print("** class doesn't exist **")
 
