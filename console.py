@@ -39,9 +39,9 @@ class HBNBCommand(cmd.Cmd):
         """Create a new instance of BaseModel, save it, and print its id."""
         args = shlex.split(arg)
         if len(args) == 0:
-            print("** class name missing**")
+            print("** class name missing **")
         elif args[0] not in self.valid_classes:
-            print("** class doesn't exist**")
+            print("** class doesn't exist **")
         else:
             new_instance = BaseModel()
             new_instance.save()
@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
             
     def do_show(self, arg):
         """Prints the string representation of an instance."""
-        args = split(arg)
+        args = shlex.split(arg)
         if not args or len(args) == 1:
             print("** class name missing **")
         else:
