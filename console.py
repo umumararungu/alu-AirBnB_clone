@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** Jesus **")
+            print("** instance id missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
                 if instance:
                     print(instance)
                 else:
-                    print("** ishimwe **")
+                    print("** no instance found **")
             except NameError:
                 print("** intime **")
 
@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** instance id missing **")
+            print("** class name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[instance_key]
                     storage.save()
                 else:
-                    print("** pauline **")
+                    print("** class doesn't exist **")
             except NameError:
                 print("** Umunyana **")
 
@@ -78,14 +78,14 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) < 3:
-            print("** nobert **")
+            print("** attribute name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
                 instance = storage.all().get(instance_key)
 
                 if not instance:
-                    print("** no instance found **")
+                    print("** class doesn't exist **")
                     return
 
                 if len(args) < 4:
