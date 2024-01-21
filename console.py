@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) < 3:
-            print("** class name missing **")
+            print("**  attribute name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
