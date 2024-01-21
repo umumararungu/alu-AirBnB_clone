@@ -63,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
-        args = split(arg)
+        args = shlex.split(arg)
         if not args or len(args) == 1:
             print("** class name missing **")
         else:
@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id."""
-        args = split(arg)
+        args = shlex.split(arg)
         if not args or len(args) == 1:
             print("** class name missing **")
         else:
