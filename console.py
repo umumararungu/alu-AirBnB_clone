@@ -5,6 +5,7 @@ from models import storage
 from models.base_model import BaseModel
 from shlex import split
 import sys
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for HBNB console."""
@@ -54,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** class doesn't exist **")
             except NameError:
-                print("** class doesn't exist **")
+                print("** instance id missing **")
 
     def do_all(self, arg):
         """Prints all string representations of instances."""
