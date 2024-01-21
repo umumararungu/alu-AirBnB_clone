@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id."""
         args = shlex.split(arg)
         if not args or len(args) == 1:
-            print("** class name missing **")
+            print("** instance id missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
