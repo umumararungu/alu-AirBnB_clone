@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** class doesn't exist **")
             except NameError:
-                print("** class doesn't exist **")
+                print("** no instance found **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
