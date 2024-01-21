@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** costance **")
+            print("** instance id missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
                 if instance:
                     print(instance)
                 else:
-                    print("** Norbert **")
+                    print("** no instance found **")
             except NameError:
                 print("** intime **")
 
@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) == 1:
-            print("** Ange **")
+            print("** instance id missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[instance_key]
                     storage.save()
                 else:
-                    print("** heureuse **")
+                    print("** class doesn't exist **")
             except NameError:
                 print("** instance id missing **")
 
@@ -78,18 +78,18 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id."""
         args = split(arg)
         if not args or len(args) < 3:
-            print("** Mwiseneza **")
+            print("** attribute name missing **")
         else:
             try:
                 instance_key = args[0] + "." + args[1]
                 instance = storage.all().get(instance_key)
 
                 if not instance:
-                    print("** Pauline **")
+                    print("** no instance found **")
                     return
 
                 if len(args) < 4:
-                    print("** umunyana **")
+                    print("** value missing **")
                     return
 
                 if len(args) < 5:
