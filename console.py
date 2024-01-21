@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** attribute doesn't exist **")
 
             except KeyError:
-                print("** class doesn't exist **")
+                print("** no instance found **")
             except NameError:
                 print("** no instance found **")
 
